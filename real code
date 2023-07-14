@@ -1,0 +1,33 @@
+function AngleEncoder (_45Incr: any[], _15Incr: any[], _5Incr: any[], _45INDX: number, _15INDX: number, _5INDX: number) {
+    basic.showNumber(_45Incr[_45INDX] + _15Incr[_15INDX] + _5Incr[_5INDX])
+    return _45Incr[_45INDX] + _15Incr[_15INDX] + _5Incr[_5INDX]
+}
+function AngleDencoder (Angle: number) {
+    if (Angle % 45 == 0) {
+        basic.showString("DIV by 45")
+        return Angle % 45
+    } else if (Angle % 15 == 0) {
+        basic.showString("DIV by 15")
+    } else if (Angle % 5 == 0) {
+        basic.showString("DIV by 5")
+    } else {
+        basic.showString("DNC")
+    }
+    return 0
+}
+AngleDencoder(95)
+let _45DIncr = [
+0,
+45,
+90,
+135,
+180
+]
+let _15DIncr = [0, 15, 30]
+let _5DIncr = [0, 5, 10]
+AngleEncoder(_45DIncr, _15DIncr, _5DIncr, 1, 1, 1)
+servos.P00.setAngle(AngleEncoder(_45DIncr, _15DIncr, _5DIncr, 1, 1, 1))
+pins.analogWritePin(AnalogPin.P0, AngleEncoder(_45DIncr, _15DIncr, _5DIncr, 1, 1, 1))
+basic.forever(function () {
+	
+})
